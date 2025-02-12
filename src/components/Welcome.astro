@@ -3,16 +3,86 @@ import astroLogo from '../assets/astro.svg';
 import background from '../assets/background.svg';
 ---
 
+
 <div id="container">
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
-			<a href="https://astro.build"
-				><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
-			>
+
+			<!-- Astro logo -->
+			<a href="https://astro.build">
+				<img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" />
+			</a>
+
+			<!-- To get started... -->
 			<h1>
 				To get started, open the <code><pre>src/pages</pre></code> directory in your project.
 			</h1>
+
+			<!-- div section for counter buttons  -->
+			<div class="counter-container">
+				<button id="counter-btn"><pre>Click me!</pre></button>
+				<span id="count">0</span>
+				<button id="clear-btn"><pre>Clear</pre></button>
+			</div>
+
+			<!-- script functionality for buttons -->
+			<script>
+				let count = 0;
+				const btn = document.getElementById('counter-btn');
+				const clbtn = document.getElementById('clear-btn');
+				const countDisplay = document.getElementById('count');
+
+				if (btn && countDisplay && clbtn) {
+					btn.addEventListener('click', () => {
+						count++;
+						countDisplay.textContent = count.toString();
+					});
+					clbtn.addEventListener('click', () => {
+						count = 0;
+						countDisplay.textContent = count.toString();
+					})
+				}
+			</script>
+			
+			<!-- style for counter buttons -->
+			<style>
+				.counter-container {
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+					margin: 1rem 0;
+				}
+
+				#counter-btn {
+					padding: 0.5rem 1rem;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+					background: white;
+					cursor: pointer;
+					font-size: 1rem;
+				}
+
+				#clear-btn {
+					padding: 0.5rem 1rem;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+					background: white;
+					cursor: pointer;
+					font-size: 1rem;
+				}
+
+				#counter-btn:hover {
+					background: #f0f0f0;
+				}
+
+				#count {
+					font-size: 1.25rem;
+					font-weight: bold;
+				}
+			</style>
+
+			<!-- Links for read docs and join discord  -->
 			<section id="links">
 				<a class="button" href="https://docs.astro.build">Read our docs</a>
 				<a href="https://astro.build/chat"
@@ -27,6 +97,7 @@ import background from '../assets/background.svg';
 		</section>
 	</main>
 
+	<!-- Popup news element in bottom right -->
 	<a href="https://astro.build/blog/astro-5/" id="news" class="box">
 		<svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
 			><path
