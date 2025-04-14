@@ -7,5 +7,10 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      // Enable if you're using Google Analytics or similar
+      enabled: true,
+    },
+  })
 });
